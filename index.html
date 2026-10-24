@@ -1,0 +1,855 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Personal portfolio of Gemechu Rorisa, Computer Science student at OBU and web developer.">
+
+    <title>Gemechu Rorisa | Web Developer</title>
+
+    <style>
+        /* ===== GENERAL STYLES ===== */
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #5148d9;
+            --dark: #111827;
+            --text: #526078;
+            --light: #f5f7ff;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 40px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 12px #00000010;
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ===== HOME SECTION ===== */
+        .home {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at top right,
+                #e2dfff, transparent 40%);
+        }
+
+        .home-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .welcome {
+            display: inline-block;
+            padding: 7px 16px;
+            border-radius: 25px;
+            background: #e9e7ff;
+            color: var(--primary-dark);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .home h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .home h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .home p {
+            color: var(--text);
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            color: white;
+        }
+
+        /* ===== PROFILE PHOTO ===== */
+        .photo-container {
+            width: 100%;
+            max-width: 350px;
+            height: 430px;
+            padding: 8px;
+            margin: auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px #00000020;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            border-radius: 20px;
+        }
+
+        /* ===== ABOUT ME ===== */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: var(--text);
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+        }
+
+        .about-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .about-tags span {
+            padding: 9px 15px;
+            background: #eeedff;
+            color: var(--primary-dark);
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* ===== SKILLS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .skill-card {
+            padding: 25px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px #00000008;
+            border: 1px solid #e5e7eb;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px #00000015;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: var(--text);
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects {
+            background: white;
+        }
+
+        .project-card {
+            overflow: hidden;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px #00000015;
+        }
+
+        .project-banner {
+            min-height: 150px;
+            display: grid;
+            place-items: center;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #e9e7ff, #dbeafe);
+        }
+
+        .project-info {
+            padding: 23px;
+        }
+
+        .project-info p {
+            color: var(--text);
+            margin-top: 10px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #eeedff;
+            color: var(--primary-dark);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+
+        .project-note {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text);
+        }
+
+        /* ===== EDUCATION ===== */
+        .education-card {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background: white;
+            border-left: 5px solid var(--primary);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #00000008;
+        }
+
+        .education-card h3 {
+            font-size: 1.5rem;
+        }
+
+        .education-card h4 {
+            color: var(--primary);
+            margin: 5px 0 15px;
+        }
+
+        .education-card p {
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact .section-description {
+            color: #cbd5e1;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-content > p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-links a {
+            padding: 12px 18px;
+            border: 1px solid #64748b;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 22px;
+            text-align: center;
+            background: #080d18;
+            color: #cbd5e1;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 850px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                padding: 20px 5%;
+                flex-direction: column;
+                gap: 15px;
+                background: white;
+                box-shadow: 0 12px 20px #00000012;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .home-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 50px 0;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .photo-container {
+                max-width: 300px;
+                height: 370px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Gemechu Rorisa.</a>
+
+            <button class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HOME SECTION -->
+        <section class="home" id="home">
+            <div class="container home-content">
+
+                <div>
+                    <span class="welcome">WELCOME TO MY PORTFOLIO</span>
+
+                    <h1>
+                        Hello, I'm
+                        <span class="highlight">Gemechu Rorisa</span>
+                    </h1>
+
+                    <h2>Computer Science Student &amp; Web Developer</h2>
+
+                    <p>
+                        I am a Computer Science student at Oda Bultum
+                        University (OBU). I am passionate about web
+                        development, programming, and building modern,
+                        responsive websites that solve real-world problems.
+                    </p>
+
+                    <div class="buttons">
+                        <a href="#projects" class="btn">View My Projects</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+
+                <div class="photo-container">
+                    <!-- Save your photo as images/gemechu.jpg -->
+                    <img
+                        src="images/gemechu.jpg"
+                        alt="Gemechu Rorisa"
+                        class="profile-photo">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section class="about" id="about">
+            <div class="container">
+
+                <h2 class="section-title">
+                    About <span class="highlight">Me</span>
+                </h2>
+
+                <p class="section-description">
+                    Get to know me and my goals.
+                </p>
+
+                <div class="about-content">
+                    <p>
+                        My name is Gemechu Rorisa. I am a Computer Science
+                        student at Oda Bultum University (OBU) and a web
+                        developer interested in creating useful and
+                        attractive websites.
+                    </p>
+
+                    <p>
+                        I enjoy learning new technologies, practicing
+                        programming, developing projects, and finding
+                        solutions to real-world problems. My goal is to
+                        become a skilled professional developer and
+                        contribute to useful technology projects.
+                    </p>
+
+                    <div class="about-tags">
+                        <span>OBU Student</span>
+                        <span>Web Developer</span>
+                        <span>Continuous Learner</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <div class="container">
+
+                <h2 class="section-title">
+                    My <span class="highlight">Skills</span>
+                </h2>
+
+                <p class="section-description">
+                    Technologies and abilities I am learning and developing.
+                </p>
+
+                <div class="grid">
+
+                    <article class="skill-card">
+                        <div class="skill-icon"></div>
+                        <h3>HTML5</h3>
+                        <p>
+                            Creating the structure and content of web pages.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon"></div>
+                        <h3>CSS3</h3>
+                        <p>
+                            Designing attractive layouts, colors, and
+                            responsive web pages.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">JS</div>
+                        <h3>JavaScript</h3>
+                        <p>
+                            Adding interactive features and behavior to
+                            websites.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">📱</div>
+                        <h3>Responsive Design</h3>
+                        <p>
+                            Making websites work on mobile phones,
+                            tablets, and computers.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon"></div>
+                        <h3>Database Concepts</h3>
+                        <p>
+                            Learning how applications store, organize,
+                            and retrieve information.
+                        </p>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon"></div>
+                        <h3>Problem Solving</h3>
+                        <p>
+                            Applying logical thinking to programming
+                            and technical challenges.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section class="projects" id="projects">
+            <div class="container">
+
+                <h2 class="section-title">
+                    My <span class="highlight">Projects</span>
+                </h2>
+
+                <p class="section-description">
+                    Examples of projects from my learning journey.
+                </p>
+
+                <div class="grid">
+
+                    <article class="project-card">
+                        <div class="project-banner">📚</div>
+
+                        <div class="project-info">
+                            <h3>OBU Library Management System</h3>
+
+                            <p>
+                                A web-based library management project
+                                concept for organizing books, searching
+                                the catalog, and managing book borrowing
+                                and returns.
+                            </p>
+
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-banner"></div>
+
+                        <div class="project-info">
+                            <h3>Student Profile Website</h3>
+
+                            <p>
+                                A website designed to display student
+                                information, educational background,
+                                skills, and interests.
+                            </p>
+
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-banner"></div>
+
+                        <div class="project-info">
+                            <h3>Personal Portfolio Website</h3>
+
+                            <p>
+                                A responsive personal website to
+                                introduce myself, showcase my skills,
+                                and share contact information.
+                            </p>
+
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <p class="project-note">
+                    These are example project descriptions. Update them
+                    with your actual completed projects and links.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education">
+            <div class="container">
+
+                <h2 class="section-title">
+                    My <span class="highlight">Education</span>
+                </h2>
+
+                <p class="section-description">
+                    My academic background.
+                </p>
+
+                <article class="education-card">
+                    <h3>Computer Science</h3>
+
+                    <h4>Oda Bultum University (OBU)</h4>
+
+                    <p>
+                        I study Computer Science at Oda Bultum University.
+                        My academic interests include programming,
+                        web development, databases, software engineering,
+                        and problem-solving.
+                    </p>
+
+                    <p>
+                        I aim to apply my academic knowledge to practical
+                        projects and continue growing as a developer.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact" id="contact">
+            <div class="container">
+
+                <h2 class="section-title">
+                    Contact <span class="highlight">Me</span>
+                </h2>
+
+                <p class="section-description">
+                    Let's connect and discuss ideas or projects.
+                </p>
+
+                <div class="contact-content">
+
+                    <p>
+                        Feel free to contact me about web development,
+                        collaboration, learning, or project opportunities.
+                    </p>
+
+                    <div class="contact-links">
+
+                        <a href="mailto:rorisagemechu@gmail.com">
+                            ✉️ rorisagemechu@gmail.com
+                        </a>
+
+                        <a href="tel:+251915481119">
+                            📞 0915481119
+                        </a>
+
+                        <a href="https://github.com/rorisagamachu-dot"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub
+                        </a>
+
+                        <a href="//www.linkedin.com/in/gamachu-rorisa-807896446/
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; <span id="year"></span> Gemechu Rorisa.
+            All rights reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Display the current year automatically.
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Mobile navigation menu.
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // Close the menu after clicking a navigation link.
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation");
+                menuToggle.textContent = "☰";
+            });
+        });
+    </script>
+
+</body>
+</html>
